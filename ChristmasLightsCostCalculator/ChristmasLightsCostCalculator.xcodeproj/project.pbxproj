@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		9327FB851DDA67060045B36C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB841DDA67060045B36C /* AppDelegate.swift */; };
-		9327FB871DDA67060045B36C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB861DDA67060045B36C /* ViewController.swift */; };
 		9327FB8A1DDA67060045B36C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9327FB881DDA67060045B36C /* Main.storyboard */; };
 		9327FB8C1DDA67060045B36C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9327FB8B1DDA67060045B36C /* Assets.xcassets */; };
 		9327FB8F1DDA67060045B36C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9327FB8D1DDA67060045B36C /* LaunchScreen.storyboard */; };
+		9327FB971DDA69D20045B36C /* Bulb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB961DDA69D20045B36C /* Bulb.swift */; };
+		9327FB991DDA69FD0045B36C /* Estimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB981DDA69FD0045B36C /* Estimate.swift */; };
+		9327FB9B1DDA6A0D0045B36C /* EstimateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB9A1DDA6A0D0045B36C /* EstimateController.swift */; };
+		9327FB9D1DDA6A4D0045B36C /* InitialSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9327FB811DDA67060045B36C /* ChristmasLightsCostCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChristmasLightsCostCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9327FB841DDA67060045B36C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9327FB861DDA67060045B36C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9327FB891DDA67060045B36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9327FB8B1DDA67060045B36C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9327FB8E1DDA67060045B36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9327FB901DDA67060045B36C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9327FB961DDA69D20045B36C /* Bulb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulb.swift; sourceTree = "<group>"; };
+		9327FB981DDA69FD0045B36C /* Estimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Estimate.swift; sourceTree = "<group>"; };
+		9327FB9A1DDA6A0D0045B36C /* EstimateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimateController.swift; sourceTree = "<group>"; };
+		9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialSceneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				9327FB841DDA67060045B36C /* AppDelegate.swift */,
-				9327FB861DDA67060045B36C /* ViewController.swift */,
 				9327FB881DDA67060045B36C /* Main.storyboard */,
+				9327FB961DDA69D20045B36C /* Bulb.swift */,
+				9327FB981DDA69FD0045B36C /* Estimate.swift */,
+				9327FB9A1DDA6A0D0045B36C /* EstimateController.swift */,
+				9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */,
 				9327FB8B1DDA67060045B36C /* Assets.xcassets */,
 				9327FB8D1DDA67060045B36C /* LaunchScreen.storyboard */,
 				9327FB901DDA67060045B36C /* Info.plist */,
@@ -96,6 +105,7 @@
 				TargetAttributes = {
 					9327FB801DDA67060045B36C = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = D9JMB4MDLY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9327FB871DDA67060045B36C /* ViewController.swift in Sources */,
+				9327FB971DDA69D20045B36C /* Bulb.swift in Sources */,
+				9327FB991DDA69FD0045B36C /* Estimate.swift in Sources */,
 				9327FB851DDA67060045B36C /* AppDelegate.swift in Sources */,
+				9327FB9B1DDA6A0D0045B36C /* EstimateController.swift in Sources */,
+				9327FB9D1DDA6A4D0045B36C /* InitialSceneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D9JMB4MDLY;
 				INFOPLIST_FILE = ChristmasLightsCostCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronmartinez.ChristmasLightsCostCalculator;
@@ -272,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D9JMB4MDLY;
 				INFOPLIST_FILE = ChristmasLightsCostCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronmartinez.ChristmasLightsCostCalculator;
@@ -299,6 +314,7 @@
 				9327FB951DDA67060045B36C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
