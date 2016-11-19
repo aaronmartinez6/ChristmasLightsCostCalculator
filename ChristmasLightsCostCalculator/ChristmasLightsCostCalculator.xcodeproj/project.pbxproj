@@ -14,7 +14,7 @@
 		9327FB971DDA69D20045B36C /* Bulb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB961DDA69D20045B36C /* Bulb.swift */; };
 		9327FB991DDA69FD0045B36C /* Estimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB981DDA69FD0045B36C /* Estimate.swift */; };
 		9327FB9B1DDA6A0D0045B36C /* EstimateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB9A1DDA6A0D0045B36C /* EstimateController.swift */; };
-		9327FB9D1DDA6A4D0045B36C /* InitialSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */; };
+		9327FBC21DDE32A30045B36C /* InitialSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,16 +61,48 @@
 			isa = PBXGroup;
 			children = (
 				9327FB841DDA67060045B36C /* AppDelegate.swift */,
-				9327FB881DDA67060045B36C /* Main.storyboard */,
-				9327FB961DDA69D20045B36C /* Bulb.swift */,
-				9327FB981DDA69FD0045B36C /* Estimate.swift */,
-				9327FB9A1DDA6A0D0045B36C /* EstimateController.swift */,
-				9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */,
+				9327FBBE1DDCF96B0045B36C /* Model */,
+				9327FBC01DDCF9A20045B36C /* ModelController */,
+				9327FBC11DDCF9BD0045B36C /* ViewControllers */,
+				9327FBBF1DDCF9810045B36C /* Views */,
 				9327FB8B1DDA67060045B36C /* Assets.xcassets */,
 				9327FB8D1DDA67060045B36C /* LaunchScreen.storyboard */,
 				9327FB901DDA67060045B36C /* Info.plist */,
 			);
 			path = ChristmasLightsCostCalculator;
+			sourceTree = "<group>";
+		};
+		9327FBBE1DDCF96B0045B36C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9327FB961DDA69D20045B36C /* Bulb.swift */,
+				9327FB981DDA69FD0045B36C /* Estimate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9327FBBF1DDCF9810045B36C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9327FB881DDA67060045B36C /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9327FBC01DDCF9A20045B36C /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				9327FB9A1DDA6A0D0045B36C /* EstimateController.swift */,
+			);
+			name = ModelController;
+			sourceTree = "<group>";
+		};
+		9327FBC11DDCF9BD0045B36C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9327FB9C1DDA6A4D0045B36C /* InitialSceneViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +182,7 @@
 				9327FB991DDA69FD0045B36C /* Estimate.swift in Sources */,
 				9327FB851DDA67060045B36C /* AppDelegate.swift in Sources */,
 				9327FB9B1DDA6A0D0045B36C /* EstimateController.swift in Sources */,
-				9327FB9D1DDA6A4D0045B36C /* InitialSceneViewController.swift in Sources */,
+				9327FBC21DDE32A30045B36C /* InitialSceneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
