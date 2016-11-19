@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class InitialSceneViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -17,17 +17,6 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
     var howMuchLabel = UILabel()
     
     var inputViewScene = UIView()
-    
-    var segmentedControllerView = UIView()
-    let customSC = UISegmentedControl(items: ["Scenario 1", "Scenario 2"])
-    var compareButton = UIButton()
-    
-    var bulbTypeView = UIView()
-    var bulbTypeLabel = UILabel()
-    var bulbTypePickerView = UIPickerView()
-    var pickerData = [String]()
-    var pickerTextField = UITextField()
-    var wattsPerBulb: Double = 0
     
     var bulbCountView = UIView()
     var bulbCountLabel = UILabel()
@@ -46,10 +35,6 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
     var daysRunningLabel = UILabel()
     var daysRunningTextField = UITextField()
     
-    var totalCostView = UIView()
-    var totalCostLabel = UILabel()
-    var totalCostCalculatedLabel = UILabel()
-    
     var calculateButton = UIButton()
     
     override func viewDidLoad() {
@@ -67,13 +52,8 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
         setupButton()
         setupButtonConstraints()
         
-        setupLabel()
-        setupLabelContraints()
-        
-        pickerData = ["Choose bulb", "C9 Incandecent", "C9 LED", "C7 Incandecent", "C7 LED"]
-        bulbTypePickerView.dataSource = self
-        bulbTypePickerView.delegate = self
-
+        setupInitialLabel()
+        setupInitialLabelContraints()
 
     }
     
@@ -112,12 +92,6 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
         
 
         setupInputViewScene()
-        setupSegmentedControllerView()
-        setupSegmentedController()
-        setupCompareButton()
-        setupBulbTypeView()
-        setupBulbTypeLabel()
-        setupPickerTextField()
         setupBulbCountView()
         setupBulbCountLabel()
         setupBulbCountTextField()
@@ -130,9 +104,6 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
         setupDaysRunningView()
         setupDaysRunningLabel()
         setupDaysRunningTextField()
-        setupTotalCostView()
-        setupTotalCostLabel()
-        setupTotalCostCalculatedLabel()
         setupCalculateButton()
         
         
@@ -156,7 +127,7 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     // MARK: - Label Functions
     
-    func setupLabel() {
+    func setupInitialLabel() {
     
         howMuchLabel.text = "How much will it cost to run my Christmas Lights?"
         howMuchLabel.numberOfLines = 0
@@ -169,7 +140,7 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
         
     }
     
-    func setupLabelContraints() {
+    func setupInitialLabelContraints() {
     
         howMuchLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -185,35 +156,8 @@ class InitialSceneViewController: UIViewController, UIPickerViewDelegate, UIPick
 
 extension InitialSceneViewController {
     
-    func compareButtonTapped() {
-        
-        
-    }
-    
     func calculateButtonTapped() {
         
-        guard let bulbType = pickerTextField.text,
-            let bulbCountText = bulbCountTextField.text,
-            let bulbCount = Int(bulbCountText),
-            let hoursPerDayText = hoursPerDayTextField.text,
-            let hoursPerDay = Int(hoursPerDayText),
-            let daysPerYearText = daysRunningTextField.text,
-            let daysPerYear = Int(daysPerYearText)
-            else {  let alertController = UIAlertController(title: "Oops", message: "All fields require an answer", preferredStyle: .alert)
-                let tryAgainAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-                alertController.addAction(tryAgainAction)
-                self.present(alertController, animated: true, completion: nil)
-
-            return }
-        
-        let totalCostString = EstimateController.calculateEnergyCosts(wattsPerBulb: wattsPerBulb, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
-        
-        totalCostCalculatedLabel.text = totalCostString
-        
-    }
-    
-//    func segmentControllerValueChanged() {
-//        
 //        guard let bulbType = pickerTextField.text,
 //            let bulbCountText = bulbCountTextField.text,
 //            let bulbCount = Int(bulbCountText),
@@ -225,17 +169,15 @@ extension InitialSceneViewController {
 //                let tryAgainAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
 //                alertController.addAction(tryAgainAction)
 //                self.present(alertController, animated: true, completion: nil)
-//                
-//                return }
-//        
-//        let totalCostDouble = EstimateController.calculateEnergyCostsReturnDouble(wattsPerBulb: wattsPerBulb, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
-//        
-//        if customSC.selectedSegmentIndex == 1 {
-//            
-//            EstimateController.createScenario(selectedSegmentIndex: 0, bulbType: bulbType, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear, totalCost: totalcost)
 //
-//        }
-//    }
+//            return }
+//        
+//        let totalCostString = EstimateController.calculateEnergyCosts(wattsPerBulb: wattsPerBulb, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
+//        
+//        totalCostCalculatedLabel.text = totalCostString
+        
+    }
+    
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // MARK: - Input View
@@ -243,15 +185,13 @@ extension InitialSceneViewController {
     
     func setupInputViewScene() {
         
-        inputViewScene.backgroundColor = UIColor.lightGray
+        inputViewScene.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
 //        inputViewScene.alpha = 0.5
         
         self.view.addSubview(inputViewScene)
         
         
         setupInputViewSceneConstraints()
-        
-        
     }
     
     func setupInputViewSceneConstraints() {
@@ -275,112 +215,12 @@ extension InitialSceneViewController {
 //        
 //        }), completion: nil)
     }
-    // Segmented Controller View
     
-    func setupSegmentedControllerView() {
-        
-        segmentedControllerView.backgroundColor = .white
-        
-        inputViewScene.addSubview(segmentedControllerView)
-    }
-    // Segmented Controller
+    // Instructions Label
     
-    func setupSegmentedController() {
+    func setupInstructionsLabel() {
         
-        customSC.backgroundColor = .white
-        customSC.selectedSegmentIndex = 0
-//        customSC.addTarget(self, action: #selector(segmentControllerValueChanged), for: .valueChanged)
         
-        segmentedControllerView.addSubview(customSC)
-    }
-    
-    // Compare Button
-    
-    func setupCompareButton() {
-        
-        compareButton.setTitle("COMPARE", for: .normal)
-        compareButton.backgroundColor = UIColor(red: 40/255, green: 120/255, blue: 20/255, alpha: 1)
-        compareButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 24)
-        compareButton.tintColor = .white
-        compareButton.layer.cornerRadius = 15
-        compareButton.addTarget(self, action: #selector(compareButtonTapped), for: .touchUpInside)
-        
-        inputViewScene.addSubview(compareButton)
-        
-    }
-    
-    // Bulb Type View
-    
-    func setupBulbTypeView() {
-        
-        bulbTypeView.backgroundColor = .white
-        
-        inputViewScene.addSubview(bulbTypeView)
-    }
-    
-    func setupBulbTypeLabel() {
-        
-        bulbTypeLabel.backgroundColor = .white
-        bulbTypeLabel.font = UIFont(name: "Avenir Next", size: 16)
-        bulbTypeLabel.text = "BULB TYPE"
-        
-        inputViewScene.addSubview(bulbTypeLabel)
-        
-    }
-    
-    func setupPickerTextField() {
-        
-        pickerTextField.inputView = bulbTypePickerView
-        pickerTextField.font = UIFont(name: "Avenir Next", size: 14)
-        pickerTextField.placeholder = "Select Bulb Size and Type"
-        
-        bulbTypeView.addSubview(pickerTextField)
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let pickerLabel = UILabel()
-        let font = UIFontDescriptor(name: "Avenir Next", size: 24)
-        pickerLabel.textAlignment = NSTextAlignment.center
-        pickerLabel.textColor = UIColor.black
-        pickerLabel.text = pickerData[row]
-        pickerLabel.font = UIFont(descriptor: font , size: 26)
-        return pickerLabel
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let type = pickerData[row]
-        switch type {
-            
-        case "C9 Incandecent":
-            self.wattsPerBulb = 7
-            pickerTextField.text = type
-        case "C9 LED":
-            self.wattsPerBulb = 1
-            pickerTextField.text = type
-        case "C7 Incandecent":
-            self.wattsPerBulb = 5
-            pickerTextField.text = type
-        case "C7 LED":
-            self.wattsPerBulb = 0.6
-            pickerTextField.text = type
-        default:
-            let alertController = UIAlertController(title: "Ah oh", message: "Please select the bulb type", preferredStyle: .alert)
-            let tryAgainAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-            alertController.addAction(tryAgainAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
     }
     
     // Bulb Count View
@@ -513,31 +353,6 @@ extension InitialSceneViewController {
         daysRunningView.addSubview(daysRunningTextField)
     }
     
-    func setupTotalCostView() {
-        
-        totalCostView.backgroundColor = .white
-        
-        inputViewScene.addSubview(totalCostView)
-    }
-    
-    func setupTotalCostLabel() {
-        
-        totalCostLabel.backgroundColor = .white
-        totalCostLabel.font = UIFont(name: "Avenir Next", size: 16)
-        totalCostLabel.text = "TOTAL COST"
-        
-        totalCostView.addSubview(totalCostLabel)
-    }
-    
-    func setupTotalCostCalculatedLabel() {
-        
-        totalCostCalculatedLabel.backgroundColor = .white
-        totalCostCalculatedLabel.font = UIFont(name: "Avenir Next", size: 12)
-        totalCostCalculatedLabel.text = ""
-        
-        totalCostView.addSubview(totalCostCalculatedLabel)
-    }
-    
     func setupCalculateButton() {
         
         calculateButton.setTitle("CALCULATE", for: .normal)
@@ -557,12 +372,7 @@ extension InitialSceneViewController {
     
     func setupEachComponentContraints() {
         
-        segmentedControllerView.translatesAutoresizingMaskIntoConstraints = false
-        customSC.translatesAutoresizingMaskIntoConstraints = false
-        compareButton.translatesAutoresizingMaskIntoConstraints = false
-        bulbTypeView.translatesAutoresizingMaskIntoConstraints = false
-        bulbTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        pickerTextField.translatesAutoresizingMaskIntoConstraints = false
+
         bulbCountView.translatesAutoresizingMaskIntoConstraints = false
         bulbCountLabel.translatesAutoresizingMaskIntoConstraints = false
         bulbCountTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -575,54 +385,11 @@ extension InitialSceneViewController {
         daysRunningView.translatesAutoresizingMaskIntoConstraints = false
         daysRunningLabel.translatesAutoresizingMaskIntoConstraints = false
         daysRunningTextField.translatesAutoresizingMaskIntoConstraints = false
-        totalCostView.translatesAutoresizingMaskIntoConstraints = false
-        totalCostLabel.translatesAutoresizingMaskIntoConstraints = false
-        totalCostCalculatedLabel.translatesAutoresizingMaskIntoConstraints = false
         calculateButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Segmented Controller View Constraints
-        
-        let segmentedControllerViewTop = NSLayoutConstraint(item: segmentedControllerView, attribute: .top, relatedBy: .equal, toItem: inputViewScene, attribute: .top, multiplier: 1, constant: 6)
-        let segmentedControllerViewLeading = NSLayoutConstraint(item: segmentedControllerView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 6)
-        let segmentedControllerViewTrailing = NSLayoutConstraint(item: segmentedControllerView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -6)
-        let segmentedControllerViewHeight = NSLayoutConstraint(item: segmentedControllerView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 45)
-        
-        // Segmented Controller Constraints
-        
-        let leadingConstraint = NSLayoutConstraint(item: customSC, attribute: .leading, relatedBy: .equal, toItem: segmentedControllerView, attribute: .leading, multiplier: 1, constant: 10)
-        let trailingConstraint = NSLayoutConstraint(item: customSC, attribute: .trailing, relatedBy: .equal, toItem: segmentedControllerView, attribute: .trailing, multiplier: 1, constant: -10)
-        let topConstraint = NSLayoutConstraint(item: customSC, attribute: .centerY, relatedBy: .equal, toItem: segmentedControllerView, attribute: .centerY, multiplier: 1, constant: 0)
-        let customSCHeight = NSLayoutConstraint(item: customSC, attribute: .height, relatedBy: .equal, toItem: segmentedControllerView, attribute: .height, multiplier: 0, constant: 35)
-        
-        // Compare Button Constraints
-        
-        let topToCustomSC = NSLayoutConstraint(item: compareButton, attribute: .top, relatedBy: .equal, toItem: customSC, attribute: .bottom, multiplier: 1, constant: 20)
-        let leadingFromCenterX = NSLayoutConstraint(item: compareButton, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .centerX, multiplier: 1, constant: -100)
-        let trailingFromCenterX = NSLayoutConstraint(item: compareButton, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .centerX, multiplier: 1, constant: 110)
-        let compareButtonHeight = NSLayoutConstraint(item: compareButton, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
-        
-        // Bulb Type View Constraints
-        
-        let topToCompareButton = NSLayoutConstraint(item: bulbTypeView, attribute: .top, relatedBy: .equal, toItem: compareButton, attribute: .bottom, multiplier: 1, constant: 20)
-        let leadingBulbTypeView = NSLayoutConstraint(item: bulbTypeView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 8)
-        let trailingBulbTypeView = NSLayoutConstraint(item: bulbTypeView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -8)
-        let heightBulbTypeView = NSLayoutConstraint(item: bulbTypeView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
-        
-        // Bulb Type Label Constraints
-        
-        let topToBulbTypeView = NSLayoutConstraint(item: bulbTypeLabel, attribute: .centerY, relatedBy: .equal, toItem: bulbTypeView, attribute: .centerY, multiplier: 1, constant: 0)
-        let leadingBulbTypeLabel = NSLayoutConstraint(item: bulbTypeLabel, attribute: .leading, relatedBy: .equal, toItem: bulbTypeView, attribute: .leading, multiplier: 1, constant: 10)
-        let trailingBulbTypeLabel = NSLayoutConstraint(item: bulbTypeLabel, attribute: .width, relatedBy: .equal, toItem: bulbTypeView, attribute: .width, multiplier: 0, constant: 140)
-        
-        // Bulb Type Picker Text Field
-        
-        let pickerTextFieldCenterY = NSLayoutConstraint(item: pickerTextField, attribute: .centerY, relatedBy: .equal, toItem: bulbTypeView, attribute: .centerY, multiplier: 1, constant: 0)
-        let leadingPickerTextField = NSLayoutConstraint(item: pickerTextField, attribute: .leading, relatedBy: .equal, toItem: bulbTypeView, attribute: .leading, multiplier: 1, constant: 170)
-        let trailingPickerTextField = NSLayoutConstraint(item: pickerTextField, attribute: .trailing, relatedBy: .equal, toItem: bulbTypeView, attribute: .trailing, multiplier: 1, constant: -10)
         
         // Bulb Count View Constraints
         
-        let topToBulbTypeViewBottom = NSLayoutConstraint(item: bulbCountView, attribute: .top, relatedBy: .equal, toItem: bulbTypeView, attribute: .bottom, multiplier: 1, constant: 4)
+        let topToBulbTypeViewBottom = NSLayoutConstraint(item: bulbCountView, attribute: .top, relatedBy: .equal, toItem: inputViewScene, attribute: .top, multiplier: 1, constant: 100)
         let leadingBulbCountView = NSLayoutConstraint(item: bulbCountView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 8)
         let trailingBulbCountView = NSLayoutConstraint(item: bulbCountView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -8)
         let heightBulbCountView = NSLayoutConstraint(item: bulbCountView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
@@ -698,35 +465,16 @@ extension InitialSceneViewController {
         let leadingDaysRunningTextField = NSLayoutConstraint(item: daysRunningTextField, attribute: .leading, relatedBy: .equal, toItem: daysRunningView, attribute: .leading, multiplier: 1, constant: 170)
         let trailingDaysRunningTextField = NSLayoutConstraint(item: daysRunningTextField, attribute: .trailing, relatedBy: .equal, toItem: daysRunningView, attribute: .trailing, multiplier: 1, constant: -10)
         
-        // Total Cost View Constraints
-        
-        let totalCostViewTop = NSLayoutConstraint(item: totalCostView, attribute: .top, relatedBy: .equal, toItem: daysRunningView, attribute: .bottom, multiplier: 1, constant: 4)
-        let totalCostViewLeading = NSLayoutConstraint(item: totalCostView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 8)
-        let totalCostViewTrailing = NSLayoutConstraint(item: totalCostView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -8)
-        let heightTotalCostView = NSLayoutConstraint(item: totalCostView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
-        
-        // Total Cost Label Constraints
-        
-        let toTopTotalCostView = NSLayoutConstraint(item: totalCostLabel, attribute: .centerY, relatedBy: .equal, toItem: totalCostView, attribute: .centerY, multiplier: 1, constant: 0)
-        let totalCostLabelLeading = NSLayoutConstraint(item: totalCostLabel, attribute: .leading, relatedBy: .equal, toItem: totalCostView, attribute: .leading, multiplier: 1, constant: 10)
-        let totalCostLabelWidth = NSLayoutConstraint(item: totalCostLabel, attribute: .width, relatedBy: .equal, toItem: totalCostView, attribute: .width, multiplier: 0, constant: 140)
-        
-        // Total Cost Calculated Label Constraints
-        
-        let totalCostCalculatedLabelCenterY = NSLayoutConstraint(item: totalCostCalculatedLabel, attribute: .centerY, relatedBy: .equal, toItem: totalCostView, attribute: .centerY, multiplier: 1, constant: 0)
-        let totalCostCalculatedLabelLeading = NSLayoutConstraint(item: totalCostCalculatedLabel , attribute: .leading, relatedBy: .equal, toItem: totalCostView, attribute: .leading, multiplier: 1, constant: 170)
-        let totalCostCalculatedLabelTrailing = NSLayoutConstraint(item: totalCostCalculatedLabel, attribute: .trailing, relatedBy: .equal, toItem: totalCostView, attribute: .trailing, multiplier: 1, constant: -10)
-        
         // Calculate Button Constraints
         
-        let calculateButtonTop = NSLayoutConstraint(item: calculateButton, attribute: .top, relatedBy: .equal, toItem: totalCostView, attribute: .bottom, multiplier: 1, constant: 20)
+        let calculateButtonTop = NSLayoutConstraint(item: calculateButton, attribute: .top, relatedBy: .equal, toItem: daysRunningView, attribute: .bottom, multiplier: 1, constant: 20)
         let calculateButtonLeading = NSLayoutConstraint(item: calculateButton, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 50)
         let calculateButtonTrailing = NSLayoutConstraint(item: calculateButton, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -50)
         let calculateButtonHeight = NSLayoutConstraint(item: calculateButton, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
         
         // Add all costraints to Input View Scene
         
-        inputViewScene.addConstraints([segmentedControllerViewTop, segmentedControllerViewLeading, segmentedControllerViewTrailing, segmentedControllerViewHeight, leadingConstraint, trailingConstraint, topConstraint, customSCHeight, topToCustomSC, leadingFromCenterX, trailingFromCenterX, compareButtonHeight, topToCompareButton, leadingBulbTypeView, trailingBulbTypeView, heightBulbTypeView, topToBulbTypeView, leadingBulbTypeLabel, trailingBulbTypeLabel, pickerTextFieldCenterY, leadingPickerTextField, trailingPickerTextField, topToBulbTypeViewBottom, leadingBulbCountView, trailingBulbCountView, heightBulbCountView, toTopBulbCountView, leadingBulbCountLabel, trailingBulbCountLabel, bulbCountTextFieldCenterY, leadingBulbCountTextField, trailingBulbCountTextField, topToBulbCountViewBottom, leadingHoursPerDayView, trailingHoursPerDayView, heightHoursPerDayView, toTopHoursPerDayView, leadingHoursPerDayLabel, trailingHoursPerDayLabel, hoursPerDayTextFieldCenterY, leadingHoursPerDayTextField, trailingHoursPerDayTextField, topToHoursPerDayViewBottom, leadingCostPerkWhView, trailingCostPerkWhView, heightCostPerkWhView, toTopCostPerkwhView, leadingCostPerkWhLabel, trailingCostPerkWhLabel, toTopCostPerkWhView2, leadingCostPerkWhFixedLabel, trailingCostPerkWhFixedLabel, topToCostPerkWhViewBottom, leadingDaysRunningView, trailingDaysRunningView, heightDaysRunningView, toTopDaysRunningView, leadingDaysRunningLabel, trailingDaysRunningLabel, daysRunningTextFieldCenterY, leadingDaysRunningTextField, trailingDaysRunningTextField, totalCostViewTop, totalCostViewLeading, totalCostViewTrailing, heightTotalCostView, toTopTotalCostView, totalCostLabelLeading, totalCostLabelWidth, totalCostCalculatedLabelCenterY, totalCostCalculatedLabelLeading, totalCostCalculatedLabelTrailing, calculateButtonTop, calculateButtonLeading, calculateButtonTrailing, calculateButtonHeight])
+        inputViewScene.addConstraints([topToBulbTypeViewBottom, leadingBulbCountView, trailingBulbCountView, heightBulbCountView, toTopBulbCountView, leadingBulbCountLabel, trailingBulbCountLabel, bulbCountTextFieldCenterY, leadingBulbCountTextField, trailingBulbCountTextField, topToBulbCountViewBottom, leadingHoursPerDayView, trailingHoursPerDayView, heightHoursPerDayView, toTopHoursPerDayView, leadingHoursPerDayLabel, trailingHoursPerDayLabel, hoursPerDayTextFieldCenterY, leadingHoursPerDayTextField, trailingHoursPerDayTextField, topToHoursPerDayViewBottom, leadingCostPerkWhView, trailingCostPerkWhView, heightCostPerkWhView, toTopCostPerkwhView, leadingCostPerkWhLabel, trailingCostPerkWhLabel, toTopCostPerkWhView2, leadingCostPerkWhFixedLabel, trailingCostPerkWhFixedLabel, topToCostPerkWhViewBottom, leadingDaysRunningView, trailingDaysRunningView, heightDaysRunningView, toTopDaysRunningView, leadingDaysRunningLabel, trailingDaysRunningLabel, daysRunningTextFieldCenterY, leadingDaysRunningTextField, trailingDaysRunningTextField, calculateButtonTop, calculateButtonLeading, calculateButtonTrailing, calculateButtonHeight])
     }
     
 }

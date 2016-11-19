@@ -40,13 +40,13 @@ class EstimateController {
         return "$\(String(abs(totalCost.roundTo(places: 2))))"
     }
     
-    static func calculateEnergyCostsReturnDouble(wattsPerBulb: Double, bulbCount: Int, hoursPerDay: Int, pricePerkWh: Double, daysPerYear: Int) -> Double {
-        
-        
-        let totalWatts = wattsPerBulb * Double(bulbCount)
-        let costPerDay = totalWatts / 1000.0 * Double(hoursPerDay) * pricePerkWh
-        return costPerDay * Double(daysPerYear)
-    }
+//    static func calculateEnergyCostsReturnDouble(wattsPerBulb: Double, bulbCount: Int, hoursPerDay: Int, pricePerkWh: Double, daysPerYear: Int) -> Double {
+//        
+//        
+//        let totalWatts = wattsPerBulb * Double(bulbCount)
+//        let costPerDay = totalWatts / 1000.0 * Double(hoursPerDay) * pricePerkWh
+//        return costPerDay * Double(daysPerYear)
+//    }
     
     
     //R
