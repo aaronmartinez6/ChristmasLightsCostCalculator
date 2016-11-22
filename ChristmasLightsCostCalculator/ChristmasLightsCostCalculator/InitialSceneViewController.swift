@@ -18,6 +18,8 @@ class InitialSceneViewController: UIViewController {
     
     var inputViewScene = UIView()
     
+    var instructionsLabel = UILabel()
+    
     var bulbCountView = UIView()
     var bulbCountLabel = UILabel()
     var bulbCountTextField = UITextField()
@@ -36,6 +38,22 @@ class InitialSceneViewController: UIViewController {
     var daysRunningTextField = UITextField()
     
     var calculateButton = UIButton()
+    
+    var c9IncandecentView = UIView()
+    var c9IncandecentLabel = UILabel()
+    var c9IncandecentCostLabel = UILabel()
+    
+    var c9LedView = UIView()
+    var c9LedLabel = UILabel()
+    var c9LedCostLabel = UILabel()
+    
+    var c7IncandecentView = UIView()
+    var c7IncandecentLabel = UILabel()
+    var c7IncandecentCostLabel = UILabel()
+    
+    var c7LedView = UIView()
+    var c7LedLabel = UILabel()
+    var c7LedCostLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +110,7 @@ class InitialSceneViewController: UIViewController {
         
 
         setupInputViewScene()
+        setupInstructionsLabel()
         setupBulbCountView()
         setupBulbCountLabel()
         setupBulbCountTextField()
@@ -105,7 +124,18 @@ class InitialSceneViewController: UIViewController {
         setupDaysRunningLabel()
         setupDaysRunningTextField()
         setupCalculateButton()
-        
+        setupC9IncandecentView()
+        setupC9IncandecentLabel()
+        setupC9IncandecentCostLabel()
+        setupC9LedView()
+        setupC9LedLabel()
+        setupC9LedCostLabel()
+        setupC7IncandecentView()
+        setupC7IncandecentLabel()
+        setupC7IncandecentCostLabel()
+        setupC7LedView()
+        setupC7LedLabel()
+        setupC7LedCostLabel()
         
         setupEachComponentContraints()
         
@@ -220,6 +250,13 @@ extension InitialSceneViewController {
     
     func setupInstructionsLabel() {
         
+        instructionsLabel.text = "Answer the following questions to see the electricity cost for several types of lights:"
+        instructionsLabel.font = UIFont(name: "Avenir Next", size: 20)
+        instructionsLabel.lineBreakMode = .byWordWrapping
+        instructionsLabel.numberOfLines = 0
+        instructionsLabel.textAlignment = .center
+        
+        inputViewScene.addSubview(instructionsLabel)
         
     }
     
@@ -365,6 +402,134 @@ extension InitialSceneViewController {
         inputViewScene.addSubview(calculateButton)
     }
     
+    // C9 Incandecent View
+    
+    func setupC9IncandecentView() {
+        
+        c9IncandecentView.backgroundColor = .white
+        
+        inputViewScene.addSubview(c9IncandecentView)
+        
+    }
+    
+    
+    // C9 Incandecent Label
+    
+    func setupC9IncandecentLabel() {
+        
+        c9IncandecentLabel.font = UIFont(name: "Avenir Next", size: 16)
+        c9IncandecentLabel.text = "C9 Incandecent:"
+        c9IncandecentLabel.textAlignment = .center
+        
+        c9IncandecentView.addSubview(c9IncandecentLabel)
+    }
+    
+    // C9 Incandecent Cost
+    
+    func setupC9IncandecentCostLabel() {
+        
+        c9IncandecentCostLabel.font = UIFont(name: "Avenir Next", size: 18)
+        c9IncandecentCostLabel.text = "Test"
+        c9IncandecentCostLabel.textAlignment = .center
+        
+        
+        c9IncandecentView.addSubview(c9IncandecentCostLabel)
+    }
+    
+    // C9 Led View
+    
+    func setupC9LedView() {
+        
+        c9LedView.backgroundColor = .white
+        
+        inputViewScene.addSubview(c9LedView)
+        
+    }
+    
+    // C9 Led Label
+    
+    func setupC9LedLabel() {
+        
+        c9LedLabel.text = "C9 LED:"
+        c9LedLabel.font = UIFont(name: "Avenir Next", size: 16)
+        c9LedLabel.textAlignment = .center
+        
+        c9LedView.addSubview(c9LedLabel)
+    }
+    
+    // C9 Led Cost
+    
+    func setupC9LedCostLabel() {
+    
+        c9LedCostLabel.text = "Test"
+        c9LedCostLabel.font = UIFont(name: "Avenir Next", size: 18)
+        c9LedCostLabel.textAlignment = .center
+
+        c9LedView.addSubview(c9LedCostLabel)
+    }
+    
+    // C7 Incandecent View
+    
+    func setupC7IncandecentView() {
+        
+        c7IncandecentView.backgroundColor = .white
+        
+        inputViewScene.addSubview(c7IncandecentView)
+    }
+    
+    // C7 Incandecent Label
+    
+    func setupC7IncandecentLabel() {
+        
+        c7IncandecentLabel.text = "C7 Incandecent:"
+        c7IncandecentLabel.font = UIFont(name: "Avenir Next", size: 16)
+        c7IncandecentLabel.textAlignment = .center
+        
+        c7IncandecentView.addSubview(c7IncandecentLabel)
+    }
+    
+    // C7 Incandecent Cost
+    
+    func setupC7IncandecentCostLabel() {
+        
+        c7IncandecentCostLabel.text = "Test"
+        c7IncandecentCostLabel.font = UIFont(name: "Avenir Next", size: 18)
+        c7IncandecentCostLabel.textAlignment = .center
+        
+        c7IncandecentView.addSubview(c7IncandecentCostLabel)
+    }
+    
+    // C7 Led View
+    
+    func setupC7LedView() {
+        
+        c7LedView.backgroundColor = .white
+        
+        inputViewScene.addSubview(c7LedView)
+        
+    }
+    
+    // C7 Led Label
+    
+    func setupC7LedLabel() {
+        
+        c7LedLabel.text = "C7 LED:"
+        c7LedLabel.font = UIFont(name: "Avenir Next", size: 16)
+        c7LedLabel.textAlignment = .center
+        
+        c7LedView.addSubview(c7LedLabel)
+    }
+    
+    // C7 Led Cost
+    
+    func setupC7LedCostLabel() {
+        
+        c7LedCostLabel.textAlignment = .center
+        c7LedCostLabel.text = "Test"
+        c7LedCostLabel.font = UIFont(name: "Avenir Next", size: 18)
+        
+        c7LedView.addSubview(c7LedCostLabel)
+    }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // MARK: - Component Constraints
@@ -372,7 +537,7 @@ extension InitialSceneViewController {
     
     func setupEachComponentContraints() {
         
-
+        instructionsLabel.translatesAutoresizingMaskIntoConstraints = false
         bulbCountView.translatesAutoresizingMaskIntoConstraints = false
         bulbCountLabel.translatesAutoresizingMaskIntoConstraints = false
         bulbCountTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -386,10 +551,28 @@ extension InitialSceneViewController {
         daysRunningLabel.translatesAutoresizingMaskIntoConstraints = false
         daysRunningTextField.translatesAutoresizingMaskIntoConstraints = false
         calculateButton.translatesAutoresizingMaskIntoConstraints = false
+        c9IncandecentView.translatesAutoresizingMaskIntoConstraints = false
+        c9IncandecentLabel.translatesAutoresizingMaskIntoConstraints = false
+        c9IncandecentCostLabel.translatesAutoresizingMaskIntoConstraints = false
+        c9LedView.translatesAutoresizingMaskIntoConstraints = false
+        c9LedLabel.translatesAutoresizingMaskIntoConstraints = false
+        c9LedCostLabel.translatesAutoresizingMaskIntoConstraints = false
+        c7IncandecentView.translatesAutoresizingMaskIntoConstraints = false
+        c7IncandecentLabel.translatesAutoresizingMaskIntoConstraints = false
+        c7IncandecentCostLabel.translatesAutoresizingMaskIntoConstraints = false
+        c7LedView.translatesAutoresizingMaskIntoConstraints = false
+        c7LedLabel.translatesAutoresizingMaskIntoConstraints = false
+        c7LedCostLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Instructions Label Constraints
+        
+        let instructionsLabelTop = NSLayoutConstraint(item: instructionsLabel, attribute: .top, relatedBy: .equal, toItem: inputViewScene, attribute: .top, multiplier: 1, constant: 25)
+        let instructionsLabelLeading = NSLayoutConstraint(item: instructionsLabel, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 30)
+        let instructionsLabelTrailing = NSLayoutConstraint(item: instructionsLabel, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -30)
         
         // Bulb Count View Constraints
         
-        let topToBulbTypeViewBottom = NSLayoutConstraint(item: bulbCountView, attribute: .top, relatedBy: .equal, toItem: inputViewScene, attribute: .top, multiplier: 1, constant: 100)
+        let topToBulbTypeViewBottom = NSLayoutConstraint(item: bulbCountView, attribute: .top, relatedBy: .equal, toItem: inputViewScene, attribute: .top, multiplier: 1, constant: 130)
         let leadingBulbCountView = NSLayoutConstraint(item: bulbCountView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 8)
         let trailingBulbCountView = NSLayoutConstraint(item: bulbCountView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -8)
         let heightBulbCountView = NSLayoutConstraint(item: bulbCountView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
@@ -472,9 +655,93 @@ extension InitialSceneViewController {
         let calculateButtonTrailing = NSLayoutConstraint(item: calculateButton, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -50)
         let calculateButtonHeight = NSLayoutConstraint(item: calculateButton, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 40)
         
+        // C9 Incandecent View Constraints
+    
+        let c9IncandecentViewBottom = NSLayoutConstraint(item: c9IncandecentView, attribute: .bottom, relatedBy: .equal, toItem: c7IncandecentView, attribute: .top, multiplier: 1, constant: -16)
+        let c9IncandecentViewLeading = NSLayoutConstraint(item: c9IncandecentView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 15)
+        let c9IncandecentViewTrailing = NSLayoutConstraint(item: c9IncandecentView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .centerX, multiplier: 1, constant: -8)
+        let c9IncandecentViewTop = NSLayoutConstraint(item: c9IncandecentView, attribute: .top, relatedBy: .equal, toItem: calculateButton, attribute: .bottom, multiplier: 1, constant: 15)
+        
+        // C9 Incandecent Label Constraints
+        
+        let c9IncandecentLabelLeading = NSLayoutConstraint(item: c9IncandecentLabel, attribute: .leading, relatedBy: .equal, toItem: c9IncandecentView, attribute: .leading, multiplier: 1, constant: 0)
+        let c9IncandecentLabelTrailing = NSLayoutConstraint(item: c9IncandecentLabel, attribute: .trailing, relatedBy: .equal, toItem: c9IncandecentView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c9IncandecentLabelBottom = NSLayoutConstraint(item: c9IncandecentLabel, attribute: .bottom, relatedBy: .equal, toItem: c9IncandecentView, attribute: .centerY, multiplier: 1, constant: 0)
+        let c9IncandecentLabelTop = NSLayoutConstraint(item: c9IncandecentLabel, attribute: .top, relatedBy: .equal, toItem: c9IncandecentView, attribute: .top, multiplier: 1, constant: 0)
+        
+        // C9 Incandecent Cost Constraints
+        
+        let c9IncandecentCostLeading = NSLayoutConstraint(item: c9IncandecentCostLabel, attribute: .leading, relatedBy: .equal, toItem: c9IncandecentView, attribute: .leading, multiplier: 1, constant: 0)
+        let c9IncandecentCostTrailing = NSLayoutConstraint(item: c9IncandecentCostLabel, attribute: .trailing, relatedBy: .equal, toItem: c9IncandecentView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c9IncandecentCostBottom = NSLayoutConstraint(item: c9IncandecentCostLabel, attribute: .bottom, relatedBy: .equal, toItem: c9IncandecentView, attribute: .bottom, multiplier: 1, constant: 0)
+        let c9IncandecentCostTop = NSLayoutConstraint(item: c9IncandecentCostLabel, attribute: .top, relatedBy: .equal, toItem: c9IncandecentView, attribute: .centerY, multiplier: 1, constant: 0)
+        
+        // C9 Led View Constraints
+        
+        let c9LedViewBottom = NSLayoutConstraint(item: c9LedView, attribute: .bottom, relatedBy: .equal, toItem: c7LedView, attribute: .top, multiplier: 1, constant: -16)
+        let c9LedViewLeading = NSLayoutConstraint(item: c9LedView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .centerX, multiplier: 1, constant: 8)
+        let c9LedViewTrailing = NSLayoutConstraint(item: c9LedView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -15)
+        let c9LedViewTop = NSLayoutConstraint(item: c9LedView, attribute: .top, relatedBy: .equal, toItem: calculateButton, attribute: .bottom, multiplier: 1, constant: 15)
+        
+        // C9 Led Label Constraints
+        
+        let c9LedLabelLeading = NSLayoutConstraint(item: c9LedLabel, attribute: .leading, relatedBy: .equal, toItem: c9LedView, attribute: .leading, multiplier: 1, constant: 0)
+        let c9LedLabelTrailing = NSLayoutConstraint(item: c9LedLabel, attribute: .trailing, relatedBy: .equal, toItem: c9LedView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c9LedLabelBottom = NSLayoutConstraint(item: c9LedLabel, attribute: .bottom, relatedBy: .equal, toItem: c9LedView, attribute: .centerY, multiplier: 1, constant: 0)
+        let c9LedLabelTop = NSLayoutConstraint(item: c9LedLabel, attribute: .top, relatedBy: .equal, toItem: c9LedView, attribute: .top, multiplier: 1, constant: 0)
+        
+        // C9 Led Cost Constraints
+        
+        let c9LedCostLeading = NSLayoutConstraint(item: c9LedCostLabel, attribute: .leading, relatedBy: .equal, toItem: c9LedView, attribute: .leading, multiplier: 1, constant: 0)
+        let c9LedCostTrailing = NSLayoutConstraint(item: c9LedCostLabel, attribute: .trailing, relatedBy: .equal, toItem: c9LedView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c9LedCostBottom = NSLayoutConstraint(item: c9LedCostLabel, attribute: .bottom, relatedBy: .equal, toItem: c9LedView, attribute: .bottom, multiplier: 1, constant: 0)
+        let c9LedCostTop = NSLayoutConstraint(item: c9LedCostLabel, attribute: .top, relatedBy: .equal, toItem: c9LedView, attribute: .centerY, multiplier: 1, constant: 0)
+        
+        // C7 Incandecent View Constraints
+        
+        let c7IncandecentViewBottom = NSLayoutConstraint(item: c7IncandecentView, attribute: .bottom, relatedBy: .equal, toItem: inputViewScene, attribute: .bottom, multiplier: 1, constant: -15)
+        let c7IncandecentViewLeading = NSLayoutConstraint(item: c7IncandecentView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .leading, multiplier: 1, constant: 15)
+        let c7IncandecentViewTrailing = NSLayoutConstraint(item: c7IncandecentView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .centerX, multiplier: 1, constant: -8)
+        let c7IncandecentViewHeight = NSLayoutConstraint(item: c7IncandecentView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 150)
+        
+        // C7 Incandecent Label Constraints
+        
+        let c7IncandecentLabelLeading = NSLayoutConstraint(item: c7IncandecentLabel, attribute: .leading, relatedBy: .equal, toItem: c7IncandecentView, attribute: .leading, multiplier: 1, constant: 0)
+        let c7IncandecentLabelTrailing = NSLayoutConstraint(item: c7IncandecentLabel, attribute: .trailing, relatedBy: .equal, toItem: c7IncandecentView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c7IncandecentLabelBottom = NSLayoutConstraint(item: c7IncandecentLabel, attribute: .bottom, relatedBy: .equal, toItem: c7IncandecentView, attribute: .centerY, multiplier: 1, constant: 0)
+        let c7IncandecentLabelTop = NSLayoutConstraint(item: c7IncandecentLabel, attribute: .top, relatedBy: .equal, toItem: c7IncandecentView, attribute: .top, multiplier: 1, constant: 0)
+        
+        // C7 Incandecent Cost Constraints
+        
+        let c7IncandecentCostLeading = NSLayoutConstraint(item: c7IncandecentCostLabel, attribute: .leading, relatedBy: .equal, toItem: c7IncandecentView, attribute: .leading, multiplier: 1, constant: 0)
+        let c7IncandecentCostTrailing = NSLayoutConstraint(item: c7IncandecentCostLabel, attribute: .trailing, relatedBy: .equal, toItem: c7IncandecentView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c7IncandecentCostBottom = NSLayoutConstraint(item: c7IncandecentCostLabel, attribute: .bottom, relatedBy: .equal, toItem: c7IncandecentView, attribute: .bottom, multiplier: 1, constant: 0)
+        let c7IncandecentCostTop = NSLayoutConstraint(item: c7IncandecentCostLabel, attribute: .top, relatedBy: .equal, toItem: c7IncandecentView, attribute: .centerY, multiplier: 1, constant: 0)
+        
+        // C7 Led View Constraints
+        
+        let c7LedViewBottom = NSLayoutConstraint(item: c7LedView, attribute: .bottom, relatedBy: .equal, toItem: inputViewScene, attribute: .bottom, multiplier: 1, constant: -15)
+        let c7LedViewTrailing = NSLayoutConstraint(item: c7LedView, attribute: .trailing, relatedBy: .equal, toItem: inputViewScene, attribute: .trailing, multiplier: 1, constant: -15)
+        let c7LedViewLeading = NSLayoutConstraint(item: c7LedView, attribute: .leading, relatedBy: .equal, toItem: inputViewScene, attribute: .centerX, multiplier: 1, constant: 8)
+        let c7LedViewHeight = NSLayoutConstraint(item: c7LedView, attribute: .height, relatedBy: .equal, toItem: inputViewScene, attribute: .height, multiplier: 0, constant: 150)
+        
+        // C7 Led Label Constraints
+        
+        let c7LedLabelLeading = NSLayoutConstraint(item: c7LedLabel, attribute: .leading, relatedBy: .equal, toItem: c7LedView, attribute: .leading, multiplier: 1, constant: 0)
+        let c7LedLabelTrailing = NSLayoutConstraint(item: c7LedLabel, attribute: .trailing, relatedBy: .equal, toItem: c7LedView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c7LedLabelBottom = NSLayoutConstraint(item: c7LedLabel, attribute: .bottom, relatedBy: .equal, toItem: c7LedView, attribute: .centerY, multiplier: 1, constant: 0)
+        let c7LedLabelTop = NSLayoutConstraint(item: c7LedLabel, attribute: .top, relatedBy: .equal, toItem: c7LedView, attribute: .top, multiplier: 1, constant: 0)
+        
+        // C7 Led Cost Constraints
+        
+        let c7LedCostLeading = NSLayoutConstraint(item: c7LedCostLabel, attribute: .leading, relatedBy: .equal, toItem: c7LedView, attribute: .leading, multiplier: 1, constant: 0)
+        let c7LedCostTrailing = NSLayoutConstraint(item: c7LedCostLabel, attribute: .trailing, relatedBy: .equal, toItem: c7LedView, attribute: .trailing, multiplier: 1, constant: 0)
+        let c7LedCostBottom = NSLayoutConstraint(item: c7LedCostLabel, attribute: .bottom, relatedBy: .equal, toItem: c7LedView, attribute: .bottom, multiplier: 1, constant: 0)
+        let c7LedCostTop = NSLayoutConstraint(item: c7LedCostLabel, attribute: .top, relatedBy: .equal, toItem: c7LedView, attribute: .centerY, multiplier: 1, constant: 0)
+        
         // Add all costraints to Input View Scene
         
-        inputViewScene.addConstraints([topToBulbTypeViewBottom, leadingBulbCountView, trailingBulbCountView, heightBulbCountView, toTopBulbCountView, leadingBulbCountLabel, trailingBulbCountLabel, bulbCountTextFieldCenterY, leadingBulbCountTextField, trailingBulbCountTextField, topToBulbCountViewBottom, leadingHoursPerDayView, trailingHoursPerDayView, heightHoursPerDayView, toTopHoursPerDayView, leadingHoursPerDayLabel, trailingHoursPerDayLabel, hoursPerDayTextFieldCenterY, leadingHoursPerDayTextField, trailingHoursPerDayTextField, topToHoursPerDayViewBottom, leadingCostPerkWhView, trailingCostPerkWhView, heightCostPerkWhView, toTopCostPerkwhView, leadingCostPerkWhLabel, trailingCostPerkWhLabel, toTopCostPerkWhView2, leadingCostPerkWhFixedLabel, trailingCostPerkWhFixedLabel, topToCostPerkWhViewBottom, leadingDaysRunningView, trailingDaysRunningView, heightDaysRunningView, toTopDaysRunningView, leadingDaysRunningLabel, trailingDaysRunningLabel, daysRunningTextFieldCenterY, leadingDaysRunningTextField, trailingDaysRunningTextField, calculateButtonTop, calculateButtonLeading, calculateButtonTrailing, calculateButtonHeight])
+        inputViewScene.addConstraints([instructionsLabelTop, instructionsLabelLeading, instructionsLabelTrailing, topToBulbTypeViewBottom, leadingBulbCountView, trailingBulbCountView, heightBulbCountView, toTopBulbCountView, leadingBulbCountLabel, trailingBulbCountLabel, bulbCountTextFieldCenterY, leadingBulbCountTextField, trailingBulbCountTextField, topToBulbCountViewBottom, leadingHoursPerDayView, trailingHoursPerDayView, heightHoursPerDayView, toTopHoursPerDayView, leadingHoursPerDayLabel, trailingHoursPerDayLabel, hoursPerDayTextFieldCenterY, leadingHoursPerDayTextField, trailingHoursPerDayTextField, topToHoursPerDayViewBottom, leadingCostPerkWhView, trailingCostPerkWhView, heightCostPerkWhView, toTopCostPerkwhView, leadingCostPerkWhLabel, trailingCostPerkWhLabel, toTopCostPerkWhView2, leadingCostPerkWhFixedLabel, trailingCostPerkWhFixedLabel, topToCostPerkWhViewBottom, leadingDaysRunningView, trailingDaysRunningView, heightDaysRunningView, toTopDaysRunningView, leadingDaysRunningLabel, trailingDaysRunningLabel, daysRunningTextFieldCenterY, leadingDaysRunningTextField, trailingDaysRunningTextField, calculateButtonTop, calculateButtonLeading, calculateButtonTrailing, calculateButtonHeight,   c7IncandecentViewBottom, c7IncandecentViewLeading, c7IncandecentViewTrailing, c7IncandecentViewHeight, c7LedViewBottom, c7LedViewTrailing, c7LedViewLeading, c7LedViewHeight, c9IncandecentViewTop, c9IncandecentViewBottom, c9IncandecentViewLeading, c9IncandecentViewTrailing, c9LedViewTop, c9LedViewBottom, c9LedViewLeading, c9LedViewTrailing, c9IncandecentLabelBottom, c9IncandecentLabelLeading, c9IncandecentLabelTrailing, c9IncandecentLabelTop, c9IncandecentCostTop, c9IncandecentCostBottom, c9IncandecentCostLeading, c9IncandecentCostTrailing, c9LedLabelTop, c9LedLabelBottom, c9LedLabelTrailing, c9LedLabelLeading, c9LedCostTop, c9LedCostBottom, c9LedCostLeading, c9LedCostTrailing, c7IncandecentLabelTop, c7IncandecentLabelBottom, c7IncandecentLabelLeading, c7IncandecentLabelTrailing, c7LedLabelTop, c7LedLabelBottom, c7LedLabelLeading, c7LedLabelTrailing, c7IncandecentCostTop, c7IncandecentCostBottom, c7IncandecentCostLeading, c7IncandecentCostTrailing, c7LedCostLeading, c7LedCostTrailing, c7LedCostTop, c7LedCostBottom])
     }
     
 }
