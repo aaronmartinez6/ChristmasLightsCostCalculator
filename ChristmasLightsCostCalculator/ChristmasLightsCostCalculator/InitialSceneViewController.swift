@@ -30,7 +30,7 @@ class InitialSceneViewController: UIViewController {
     
     var costPerkWhView = UIView()
     var costPerkWhLabel = UILabel()
-    let pricePerkWh = 0.11
+    let pricePerkWh = 0.12
     var costPerkWhFixedLabel = UILabel()
     
     var daysRunningView = UIView()
@@ -72,6 +72,8 @@ class InitialSceneViewController: UIViewController {
         
         setupInitialLabel()
         setupInitialLabelContraints()
+        
+        hideKeyboardWhenViewIsTapped()
 
     }
     
@@ -188,23 +190,31 @@ extension InitialSceneViewController {
     
     func calculateButtonTapped() {
         
-//        guard let bulbType = pickerTextField.text,
-//            let bulbCountText = bulbCountTextField.text,
-//            let bulbCount = Int(bulbCountText),
-//            let hoursPerDayText = hoursPerDayTextField.text,
-//            let hoursPerDay = Int(hoursPerDayText),
-//            let daysPerYearText = daysRunningTextField.text,
-//            let daysPerYear = Int(daysPerYearText)
-//            else {  let alertController = UIAlertController(title: "Oops", message: "All fields require an answer", preferredStyle: .alert)
-//                let tryAgainAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-//                alertController.addAction(tryAgainAction)
-//                self.present(alertController, animated: true, completion: nil)
-//
-//            return }
-//        
-//        let totalCostString = EstimateController.calculateEnergyCosts(wattsPerBulb: wattsPerBulb, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
-//        
-//        totalCostCalculatedLabel.text = totalCostString
+        dismissKeyboard()
+        
+        guard let bulbCountText = bulbCountTextField.text,
+            let bulbCount = Int(bulbCountText),
+            let hoursPerDayText = hoursPerDayTextField.text,
+            let hoursPerDay = Int(hoursPerDayText),
+            let daysPerYearText = daysRunningTextField.text,
+            let daysPerYear = Int(daysPerYearText)
+            else {  let alertController = UIAlertController(title: "Oops", message: "All fields require an answer", preferredStyle: .alert)
+                let tryAgainAction = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
+                alertController.addAction(tryAgainAction)
+                self.present(alertController, animated: true, completion: nil)
+
+            return }
+        
+        let c9IncandescentCost = EstimateController.calculateEnergyCosts(wattsPerBulb: 7.0, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
+        let c9LedCost = EstimateController.calculateEnergyCosts(wattsPerBulb: 1.0, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
+        let c7IncandescentCost = EstimateController.calculateEnergyCosts(wattsPerBulb: 5.0, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
+        let c7LedCost = EstimateController.calculateEnergyCosts(wattsPerBulb: 0.6, bulbCount: bulbCount, hoursPerDay: hoursPerDay, pricePerkWh: pricePerkWh, daysPerYear: daysPerYear)
+        
+        c9IncandecentCostLabel.text = c9IncandescentCost
+        c9LedCostLabel.text = c9LedCost
+        c7IncandecentCostLabel.text = c7IncandescentCost
+        c7LedCostLabel.text = c7LedCost
+        
         
     }
     
@@ -359,7 +369,7 @@ extension InitialSceneViewController {
         
         costPerkWhFixedLabel.backgroundColor = .white
         costPerkWhFixedLabel.font = UIFont(name: "Avenir Next", size: 12)
-        costPerkWhFixedLabel.text = "$0.11/kWh (average in Utah)"
+        costPerkWhFixedLabel.text = "$0.12/kWh (National Average)"
         
         costPerkWhView.addSubview(costPerkWhFixedLabel)
     }
@@ -418,7 +428,7 @@ extension InitialSceneViewController {
     func setupC9IncandecentLabel() {
         
         c9IncandecentLabel.font = UIFont(name: "Avenir Next", size: 16)
-        c9IncandecentLabel.text = "C9 Incandecent:"
+        c9IncandecentLabel.text = "C9 Incandescent:"
         c9IncandecentLabel.textAlignment = .center
         
         c9IncandecentView.addSubview(c9IncandecentLabel)
@@ -481,7 +491,7 @@ extension InitialSceneViewController {
     
     func setupC7IncandecentLabel() {
         
-        c7IncandecentLabel.text = "C7 Incandecent:"
+        c7IncandecentLabel.text = "C7 Incandescent:"
         c7IncandecentLabel.font = UIFont(name: "Avenir Next", size: 16)
         c7IncandecentLabel.textAlignment = .center
         
@@ -746,6 +756,16 @@ extension InitialSceneViewController {
     
 }
 
+extension InitialSceneViewController {
+    func hideKeyboardWhenViewIsTapped() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InitialSceneViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 
 

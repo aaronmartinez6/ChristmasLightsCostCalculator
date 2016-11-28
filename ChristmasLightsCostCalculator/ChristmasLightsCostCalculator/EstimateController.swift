@@ -12,8 +12,8 @@ class EstimateController {
     
     //C
     
-    static var scenario1: Estimate?
-    static var scenario2: Estimate?
+//    static var scenario1: Estimate?
+//    static var scenario2: Estimate?
     
 //    static func createScenario(selectedSegmentIndex: Int, bulbType: String, bulbCount: Int, hoursPerDay: Int, pricePerkWh: Double, daysPerYear: Int, totalCost: Double) {
 //        
